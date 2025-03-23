@@ -1,21 +1,30 @@
-import './Buscador.css'
-import { Buscar } from './Icons';
+import { useState } from "react";
+import "./Buscador.css";
 
-function Buscador() {
-    return(
-        <>
-        <h2 className= 'titulo' > Encuentra tu pokemon</h2>
-        <section className='container-buscar'>
-            <input type='text' placeholder='Encuentra tu pokemon' 
-            className='input-buscar' />
-            <button className='btn-buscar'>
-            <Buscar />
-                Buscar pokemon
-            </button>
-        </section>
-        
-        </>
-        
-    )
+interface BuscadorProps {
+  onSearch: (nombre: string) => void;
 }
+
+const Buscador: React.FC<BuscadorProps> = ({ onSearch }) => {
+  const [busqueda, setBusqueda] = useState("");
+
+  const manejarCambio = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const nuevoValor = e.target.value;
+    setBusqueda(nuevoValor);
+    onSearch(nuevoValor); // Llama a la función cada vez que cambia el input
+  };
+
+  return (
+    <div className="buscador-container">
+      <input
+        type="text"
+        placeholder="Buscar Pokémon..."
+        value={busqueda}
+        onChange={manejarCambio}
+        className="input-buscar"
+      />
+    </div>
+  );
+};
+
 export default Buscador;

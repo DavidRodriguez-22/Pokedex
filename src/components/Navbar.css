@@ -1,11 +1,13 @@
 nav {
-    background-color: rgba(236, 71, 20, 0.87);
+    background: linear-gradient(45deg, #8b0000, #b22222, #5a0000);
     align-items: center;
     padding: .5rem 0;
     display: flex;
     justify-content: space-around;
-    box-shadow: 4px 4px 8px #00000020;
+    box-shadow: 4px 4px 8px #00000070;
+    border-bottom: 2px solid #3d0000;
 }
+
 nav > svg {
     height: 3rem;
     width: auto;
@@ -43,5 +45,4 @@ nav > svg {
 
 .check-switch:checked + .slider {
     transform: translateX(2.5rem);
-
-} 
+}
