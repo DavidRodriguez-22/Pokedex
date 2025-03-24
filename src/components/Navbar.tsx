@@ -1,21 +1,15 @@
-import { Logo, Sol, Luna } from "./Icons";
+import { Logo} from "./Icons";
 import './Navbar.css'
 const Navbar: React.FC = () => {
     return (
         <nav>
             <Logo />
-            <div className="switch">
-                <Sol />
-                
-                <label>
-                    <input type="checkbox" className="check-switch" hidden/>
-                    <span className="slider" ></span>
-                </label>
-                <Luna />
+            <div>
+                <img src="/Pokebola-pokeball-png-0.png" alt="Pokebola" className="logo" />
             </div>
         </nav>
     );
   };
   
   export default Navbar;
-  /* Prueba de cambiotikitiki */
+ 

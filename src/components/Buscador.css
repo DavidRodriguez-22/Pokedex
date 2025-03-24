@@ -1,8 +1,8 @@
 .buscador-container {
   display: flex;
-  flex-direction: column; /* Apila los elementos en columna */
-  align-items: center; /* Centra los elementos horizontalmente */
-  gap: 20px; /* Espaciado entre input y resultados */
+  flex-direction: column; 
+  align-items: center; 
+  gap: 20px; 
   margin: 20px 0;
 }
 

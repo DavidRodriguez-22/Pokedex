@@ -1,6 +1,7 @@
 import { useState } from "react";
 import usePokemon from "../hooks/usePokemon";
 import "./Buscador.css";
+import traduccionesTipos from "../utils/traduccionesTipos";
 
 interface BuscadorProps {
   onSearch: (busqueda: string) => void;
@@ -13,7 +14,7 @@ const Buscador: React.FC<BuscadorProps> = ({ onSearch }) => {
   const manejarCambio = (e: React.ChangeEvent<HTMLInputElement>) => {
     const valor = e.target.value;
     setBusqueda(valor);
-    onSearch(valor); // 🔥 Enviar el valor al estado global en App.tsx
+    onSearch(valor); 
   };
 
   return (
@@ -49,15 +50,18 @@ const Buscador: React.FC<BuscadorProps> = ({ onSearch }) => {
                 />
               )}
 
-              <div className="pokemon-tipos">
-                {pokemon.pokemon_v2_pokemontypes.map((tipo: any) => (
-                  <span key={tipo.pokemon_v2_type.name} className={`tipo ${tipo.pokemon_v2_type.name}`}>
-                    {tipo.pokemon_v2_type.name}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+        <div className="pokemon-tipos">
+                    {pokemon.pokemon_v2_pokemontypes.map((tipo: any) => {
+                      const nombreTipo = tipo.pokemon_v2_type.name;
+                      return (
+                        <span key={nombreTipo} className={`tipo ${nombreTipo}`}>
+                          {traduccionesTipos[nombreTipo] || nombreTipo}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
         </div>
       )}
     </div>

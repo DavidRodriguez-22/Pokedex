@@ -13,37 +13,7 @@ nav > svg {
     width: auto;
 }
 
-.switch {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.logo {
+    width: 40px; 
+    height: auto; 
 }
-    
-.switch > svg {
-    height: 1.5rem;
-    width: auto;
-}
-    
-.switch > label {
-    background-color: rgb(252, 250, 250);
-    width: 4rem;
-    height: 1.5rem;
-    border-radius: 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 2px;
-}
-
-.slider {
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 1.5rem;
-    background-color: rgba(43, 41, 41, 0.39);
-    transition: 0.5s;
-}
-
-.check-switch:checked + .slider {
-    transform: translateX(2.5rem);
-}
-/* Prueba de cambiotikitiki */

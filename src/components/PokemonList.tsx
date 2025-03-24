@@ -1,5 +1,6 @@
 import usePokemones from "../hooks/UsePokemones";
 import "./pokemonList.css";
+import traduccionesTipos from "../utils/traduccionesTipos";
 
 interface PokemonListProps {
   filtro: string;
@@ -19,26 +20,6 @@ const PokemonList: React.FC<PokemonListProps> = ({ filtro }) => {
 
   if (error) return <p>Error: {error.message}</p>;
 
-  const traduccionesTipos: { [key: string]: string } = {
-    normal: "Normal",
-    fire: "Fuego",
-    water: "Agua",
-    electric: "Eléctrico",
-    grass: "Planta",
-    ice: "Hielo",
-    fighting: "Lucha",
-    poison: "Veneno",
-    ground: "Tierra",
-    flying: "Volador",
-    psychic: "Psíquico",
-    bug: "Bicho",
-    rock: "Roca",
-    ghost: "Fantasma",
-    dragon: "Dragón",
-    dark: "Siniestro",
-    steel: "Acero",
-    fairy: "Hada"
-  };
 
   const pokemonesFiltrados = data.pokemon_v2_pokemon.filter((pokemon: any) =>
     pokemon.name.toLowerCase().includes(filtro.toLowerCase())

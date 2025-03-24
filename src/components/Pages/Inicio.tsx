@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "../Inicio.css"; // Un nivel arriba para acceder a 'components'
+import "../Inicio.css"; 
 
 
 const Inicio = () => {
