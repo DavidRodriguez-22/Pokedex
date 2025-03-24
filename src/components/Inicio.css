@@ -1,0 +1,48 @@
+/* Fondo con imagen y degradado oscuro */
+.inicio-container {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("/fondo_inicio.png") center/cover no-repeat fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+/* Estilo del título */
+.inicio-container h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Estilo del subtítulo */
+.inicio-container p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+/* Botón atractivo con borde iluminado */
+.inicio-button {
+    background: #ffcc00;
+    color: black;
+    padding: 14px 28px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border: 2px solid rgba(255, 204, 0, 0.8);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+}
+
+/* Efecto hover con más brillo */
+.inicio-button:hover {
+    background: #ffdb4d;
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(255, 204, 0, 0.8);
+}

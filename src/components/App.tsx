@@ -1,23 +1,18 @@
-import { useState } from "react";
-import { ApolloProvider } from "@apollo/client";
-import { client } from "../services/graphql";
-import PokemonList from "./PokemonList";
-import Navbar from "./Navbar";
-import Buscador from "./Buscador";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Inicio from "./Pages/Inicio";
+import Pokedex from "./Pages/Pokedex";
+
 
 const App = () => {
-  const [filtro, setFiltro] = useState("");
-
-  return (
-    <ApolloProvider client={client}>
-      <>
-        <Navbar />
-        <Buscador onSearch={setFiltro} />
-        <PokemonList filtro={filtro} />
-      </>
-    </ApolloProvider>
-  );
+    console.log("Renderizando App...");
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Inicio />} />
+                <Route path="/pokedex" element={<Pokedex />} />
+            </Routes>
+        </Router>
+    );
 };
 
 export default App;
-/* Prueba de cambiotikitiki */
