@@ -2,7 +2,7 @@ import usePokemones from "../hooks/UsePokemones";
 import "./pokemonList.css";
 
 interface PokemonListProps {
-  filtro: string;
+  filtro: string; // 
 }
 
 const PokemonList: React.FC<PokemonListProps> = ({ filtro }) => {
@@ -11,7 +11,6 @@ const PokemonList: React.FC<PokemonListProps> = ({ filtro }) => {
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  // Traducción del tipo de Pokémon
   const traduccionesTipos: { [key: string]: string } = {
     normal: "Normal",
     fire: "Fuego",
@@ -41,7 +40,6 @@ const PokemonList: React.FC<PokemonListProps> = ({ filtro }) => {
     <div className="pokemon-container">
       {pokemonesFiltrados.map((pokemon: any) => (
         <div key={pokemon.id} className="pokemon-card">
-          
           <div className="pokemon-numero">
             <span className="numero-visible">#{pokemon.id}</span>
           </div>
@@ -83,4 +81,3 @@ const PokemonList: React.FC<PokemonListProps> = ({ filtro }) => {
 };
 
 export default PokemonList;
-/* Prueba de cambiotikitiki */

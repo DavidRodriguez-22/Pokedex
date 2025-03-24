@@ -1,7 +1,6 @@
 /* Fondo negro detrás de la imagen de fondo */
 body {
-    background-color: black;
-    /* Fondo negro de toda la pantalla */
+    background-color: black; /* Fondo negro de toda la pantalla */
     margin: 0;
     padding: 0;
 }
@@ -9,15 +8,17 @@ body {
 /* Contenedor de las cartas Pokémon */
 .pokemon-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
     gap: 20px;
     padding: 10px;
-    max-width: 90vw;
+    max-width: 90vw; 
     margin: 1rem auto;
-    overflow: hidden;
+    overflow: hidden; 
 
     /* Imagen de fondo */
-    background-image: url("/fondo_neon.png");
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+        url("/fondo_neon.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -30,14 +31,13 @@ body {
     flex-direction: column;
     align-items: center;
     border-radius: 20px;
-    background-color: rgba(224, 224, 217, 0.4);
-    /* Fondo con transparencia */
+    background-color: rgba(224, 224, 217, 0.4); /* Fondo con transparencia */
     padding: 15px;
     text-align: center;
     box-shadow: 4px 4px 4px #21212120;
-    position: relative;
-    width: 180px;
-    height: 230px;
+    position: relative; 
+    width: 180px; 
+    height: 230px; 
 }
 
 .pokemon-card:hover {
@@ -66,10 +66,8 @@ body {
     font-size: 14px;
     font-weight: bold;
     color: black;
-    background: linear-gradient(to bottom, rgba(255, 0, 0, 0.5) 50%, rgba(255, 255, 255, 0.5) 50%);
-    /* Rojo y blanco con transparencia */
-    border: 2px solid black;
-    /* Mantiene el contorno negro sólido */
+    background: linear-gradient(to bottom, rgba(255, 0, 0, 0.5) 50%, rgba(255, 255, 255, 0.5) 50%); /* Rojo y blanco con transparencia */
+    border: 2px solid black; /* Mantiene el contorno negro sólido */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     text-shadow: 1px 1px 2px rgb(255, 255, 255);
 }
@@ -77,22 +75,16 @@ body {
 /* Número en la esquina superior izquierda */
 .numero-visible {
     position: absolute;
-    z-index: 5;
-    /* Asegura que el número esté por encima */
-    font-size: 18px;
-    /* Aumenta el tamaño */
-    font-weight: 900;
-    /* Hace el número más grueso */
-    color: rgb(0, 0, 0);
-    /* Blanco para mayor visibilidad */
-    text-shadow:
-        -2px -2px 2px rgb(255, 255, 255),
-        2px -2px 2px rgb(255, 255, 255),
-        -2px 2px 2px rgb(255, 255, 255),
-        2px 2px 2px rgb(255, 255, 255);
-    /* Borde negro alrededor del número */
+    z-index: 5; /* Asegura que el número esté por encima */
+    font-size: 18px; /* Aumenta el tamaño */
+    font-weight: 900; /* Hace el número más grueso */
+    color: rgb(0, 0, 0); /* Blanco para mayor visibilidad */
+    text-shadow: 
+        -2px -2px 2px rgb(255, 255, 255), 
+        2px -2px 2px rgb(255, 255, 255), 
+        -2px 2px 2px rgb(255, 255, 255), 
+        2px 2px 2px rgb(255, 255, 255); /* Borde negro alrededor del número */
 }
-
 /* Línea negra en el centro */
 .pokemon-numero::before {
     content: "";
@@ -103,8 +95,7 @@ body {
     height: 3px;
     background-color: black;
     transform: translateY(-50%);
-    opacity: 0.8;
-    /* Hace la línea un poco transparente */
+    opacity: 0.8; /* Hace la línea un poco transparente */
 }
 
 /* Botón central de la Pokébola */
@@ -115,13 +106,11 @@ body {
     left: 50%;
     width: 10px;
     height: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-    /* Botón con algo de transparencia */
+    background-color: rgba(255, 255, 255, 0.8); /* Botón con algo de transparencia */
     border: 2px solid black;
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
-    /* Botón detrás del número */
+    z-index: 2; /* Botón detrás del número */
 }
 
 /* Tipos de Pokémon */
@@ -130,7 +119,7 @@ body {
     gap: 5px;
     margin-top: 5px;
 }
-
+  
 .tipo {
     padding: 5px 10px;
     border-radius: 10px;
@@ -141,95 +130,42 @@ body {
 }
 
 /* Colores dependiendo del tipo de Pokémon */
-.tipo.normal {
-    background-color: #A8A77A;
-}
-
-.tipo.fire {
-    background-color: #EE8130;
-}
-
-.tipo.water {
-    background-color: #6390F0;
-}
-
-.tipo.electric {
-    background-color: #F7D02C;
-}
-
-.tipo.grass {
-    background-color: #7AC74C;
-}
-
-.tipo.ice {
-    background-color: #96D9D6;
-}
-
-.tipo.fighting {
-    background-color: #C22E28;
-}
-
-.tipo.poison {
-    background-color: #A33EA1;
-}
-
-.tipo.ground {
-    background-color: #E2BF65;
-}
-
-.tipo.flying {
-    background-color: #A98FF3;
-}
-
-.tipo.psychic {
-    background-color: #F95587;
-}
-
-.tipo.bug {
-    background-color: #A6B91A;
-}
-
-.tipo.rock {
-    background-color: #B6A136;
-}
-
-.tipo.ghost {
-    background-color: #735797;
-}
-
-.tipo.dragon {
-    background-color: #6F35FC;
-}
-
-.tipo.dark {
-    background-color: #705746;
-}
-
-.tipo.steel {
-    background-color: #B7B7CE;
-}
-
-.tipo.fairy {
-    background-color: #D685AD;
-}
+.tipo.normal { background-color: #A8A77A; }
+.tipo.fire { background-color: #EE8130; }
+.tipo.water { background-color: #6390F0; }
+.tipo.electric { background-color: #F7D02C; }
+.tipo.grass { background-color: #7AC74C; }
+.tipo.ice { background-color: #96D9D6; }
+.tipo.fighting { background-color: #C22E28; }
+.tipo.poison { background-color: #A33EA1; }
+.tipo.ground { background-color: #E2BF65; }
+.tipo.flying { background-color: #A98FF3; }
+.tipo.psychic { background-color: #F95587; }
+.tipo.bug { background-color: #A6B91A; }
+.tipo.rock { background-color: #B6A136; }
+.tipo.ghost { background-color: #735797; }
+.tipo.dragon { background-color: #6F35FC; }
+.tipo.dark { background-color: #705746; }
+.tipo.steel { background-color: #B7B7CE; }
+.tipo.fairy { background-color: #D685AD; }
 
 /* Responsividad */
 @media (max-width: 1024px) {
     .pokemon-container {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, 1fr); 
     }
 }
 
 @media (max-width: 768px) {
     .pokemon-container {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr); 
     }
 }
 
 @media (max-width: 480px) {
     .pokemon-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px; 
     }
 
     .pokemon-imagen {
@@ -237,5 +173,4 @@ body {
         height: 100px;
     }
 }
-
 /* Prueba de cambiotikitiki */

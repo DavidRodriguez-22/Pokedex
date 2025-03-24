@@ -3,7 +3,7 @@ import { ApolloProvider } from "@apollo/client";
 import { client } from "../../services/graphql";
 import PokemonList from "../PokemonList";
 import Navbar from "../Navbar";
-import Buscador from "../Buscador";
+import Buscador from "../Buscador.tsx";
 
 const App = () => {
   const [filtro, setFiltro] = useState("");
