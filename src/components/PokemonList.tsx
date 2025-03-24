@@ -2,13 +2,21 @@ import usePokemones from "../hooks/UsePokemones";
 import "./pokemonList.css";
 
 interface PokemonListProps {
-  filtro: string; // 
+  filtro: string;
 }
 
 const PokemonList: React.FC<PokemonListProps> = ({ filtro }) => {
   const { data, loading, error, cargarMasPokemones, cargarPokemonesAnteriores, offset } = usePokemones();
 
-  if (loading) return <p>Cargando...</p>;
+  if (loading)
+    return (
+      <div className="loading-container">
+        <img src="/cargando.gif" alt="Cargando..." />
+
+        <p className="loading-text">Cargando...</p>
+      </div>
+    );
+
   if (error) return <p>Error: {error.message}</p>;
 
   const traduccionesTipos: { [key: string]: string } = {
@@ -61,7 +69,7 @@ const PokemonList: React.FC<PokemonListProps> = ({ filtro }) => {
               const nombreTipo = tipo.pokemon_v2_type.name;
               return (
                 <span key={nombreTipo} className={`tipo ${nombreTipo}`}>
-                  {traduccionesTipos[nombreTipo] || nombreTipo} {/* Traducción o nombre original */}
+                  {traduccionesTipos[nombreTipo] || nombreTipo}
                 </span>
               );
             })}

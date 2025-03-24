@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_POKEMONS } from "../queries/getPokemonList";
 
@@ -6,11 +6,21 @@ const PAGE_SIZE = 30;
 
 const usePokemones = () => {
   const [offset, setOffset] = useState(0);
+  const [isLoading, setIsLoading] = useState(true); // Estado de carga manual
 
   const { data, loading, error, fetchMore } = useQuery(GET_POKEMONS, {
     variables: { limit: PAGE_SIZE, offset },
     fetchPolicy: "cache-and-network",
   });
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500); // Simula un tiempo de carga para la Pokédex
+
+    return () => clearTimeout(timer);
+  }, [data]);
 
   const cargarMasPokemones = () => {
     setOffset((prevOffset) => {
@@ -32,7 +42,7 @@ const usePokemones = () => {
     });
   };
 
-  return { data, loading, error, cargarMasPokemones, cargarPokemonesAnteriores, offset };
+  return { data, loading: loading || isLoading, error, cargarMasPokemones, cargarPokemonesAnteriores, offset };
 };
 
 export default usePokemones;

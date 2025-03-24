@@ -1,8 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 /* Fondo negro detrás de la imagen de fondo */
 body {
     background-color: black; /* Fondo negro de toda la pantalla */
     margin: 0;
     padding: 0;
+}
+
+/* Contenedor de carga */
+.loading-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cargando {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.loading-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    color: yellow; /* Cambia el color si quieres */
+  }
+
+.loading-gif {
+    width: 200px; /* Ajusta el tamaño según necesites */
+    height: 200px;
 }
 
 /* Contenedor de las cartas Pokémon */
@@ -15,7 +40,7 @@ body {
     margin: 1rem auto;
     overflow: hidden; 
 
-    /* Imagen de fondo */
+    /* Imagen de fondo con opacidad */
     background: 
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
         url("/fondo_neon.png");
@@ -66,25 +91,26 @@ body {
     font-size: 14px;
     font-weight: bold;
     color: black;
-    background: linear-gradient(to bottom, rgba(255, 0, 0, 0.5) 50%, rgba(255, 255, 255, 0.5) 50%); /* Rojo y blanco con transparencia */
-    border: 2px solid black; /* Mantiene el contorno negro sólido */
+    background: linear-gradient(to bottom, rgba(255, 0, 0, 0.5) 50%, rgba(255, 255, 255, 0.5) 50%);
+    border: 2px solid black;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     text-shadow: 1px 1px 2px rgb(255, 255, 255);
 }
 
-/* Número en la esquina superior izquierda */
+/* Número visible */
 .numero-visible {
     position: absolute;
-    z-index: 5; /* Asegura que el número esté por encima */
-    font-size: 18px; /* Aumenta el tamaño */
-    font-weight: 900; /* Hace el número más grueso */
-    color: rgb(0, 0, 0); /* Blanco para mayor visibilidad */
+    z-index: 5;
+    font-size: 18px;
+    font-weight: 900;
+    color: rgb(0, 0, 0);
     text-shadow: 
         -2px -2px 2px rgb(255, 255, 255), 
         2px -2px 2px rgb(255, 255, 255), 
         -2px 2px 2px rgb(255, 255, 255), 
-        2px 2px 2px rgb(255, 255, 255); /* Borde negro alrededor del número */
+        2px 2px 2px rgb(255, 255, 255);
 }
+
 /* Línea negra en el centro */
 .pokemon-numero::before {
     content: "";
@@ -95,7 +121,7 @@ body {
     height: 3px;
     background-color: black;
     transform: translateY(-50%);
-    opacity: 0.8; /* Hace la línea un poco transparente */
+    opacity: 0.8;
 }
 
 /* Botón central de la Pokébola */
@@ -106,11 +132,11 @@ body {
     left: 50%;
     width: 10px;
     height: 10px;
-    background-color: rgba(255, 255, 255, 0.8); /* Botón con algo de transparencia */
+    background-color: rgba(255, 255, 255, 0.8);
     border: 2px solid black;
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2; /* Botón detrás del número */
+    z-index: 2;
 }
 
 /* Tipos de Pokémon */
@@ -173,4 +199,5 @@ body {
         height: 100px;
     }
 }
+
 /* Prueba de cambiotikitiki */
