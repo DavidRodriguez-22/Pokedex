@@ -16,3 +16,4 @@ export const GET_POKEMONS = gql`
     }
   }
 `;
+/* Prueba de cambiotikitiki */

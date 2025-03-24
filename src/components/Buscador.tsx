@@ -28,3 +28,4 @@ const Buscador: React.FC<BuscadorProps> = ({ onSearch }) => {
 };
 
 export default Buscador;
+/* Prueba de cambiotikitiki */

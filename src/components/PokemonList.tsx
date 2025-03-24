@@ -83,3 +83,4 @@ const PokemonList: React.FC<PokemonListProps> = ({ filtro }) => {
 };
 
 export default PokemonList;
+/* Prueba de cambiotikitiki */
