@@ -1,0 +1,14 @@
+.pokemon-detail-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 10px;
+    max-width: 90vw;
+    margin: 1rem auto;
+    overflow: hidden;
+    background: white;
+
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "../Inicio.css"; 
+import "../Inicio.css";
 
 
 const Inicio = () => {

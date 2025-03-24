@@ -1,25 +1,25 @@
 import usePokemones from "../hooks/UsePokemones";
 import "./pokemonList.css";
 import traduccionesTipos from "../utils/traduccionesTipos";
+import { useNavigate } from "react-router-dom";
 
 interface PokemonListProps {
   filtro: string;
 }
 
 const PokemonList: React.FC<PokemonListProps> = ({ filtro }) => {
+  const navigate = useNavigate(); // Agregamos useNavigate para la navegación
   const { data, loading, error, cargarMasPokemones, cargarPokemonesAnteriores, offset } = usePokemones();
 
   if (loading)
     return (
       <div className="loading-container">
         <img src="/cargando.gif" alt="Cargando..." />
-
         <p className="loading-text">Cargando...</p>
       </div>
     );
 
   if (error) return <p>Error: {error.message}</p>;
-
 
   const pokemonesFiltrados = data.pokemon_v2_pokemon.filter((pokemon: any) =>
     pokemon.name.toLowerCase().includes(filtro.toLowerCase())
@@ -28,7 +28,16 @@ const PokemonList: React.FC<PokemonListProps> = ({ filtro }) => {
   return (
     <div className="pokemon-container">
       {pokemonesFiltrados.map((pokemon: any) => (
-        <div key={pokemon.id} className="pokemon-card">
+        <div
+          key={pokemon.id}
+          className="pokemon-card"
+          onClick={() => {
+            console.log(`Navegando a: /pokedex/${pokemon.id}`); // Verifica qué URL está generando
+            navigate(`/pokedex/${pokemon.id}`);
+          }}
+
+          style={{ cursor: "pointer" }} // Agrega cursor de puntero para indicar clickeabilidad
+        >
           <div className="pokemon-numero">
             <span className="numero-visible">#{pokemon.id}</span>
           </div>
