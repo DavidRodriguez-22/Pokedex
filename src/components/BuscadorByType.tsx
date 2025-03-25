@@ -46,16 +46,6 @@ const BuscadorPorTipos: React.FC<BuscadorPorTiposProps> = ({ setFiltro }) => {
     setTipoSeleccionado(tipo);
     setFiltro(tipo);
   };
-  
-  if (loading)
-    return (
-      <div className="loading-container">
-        <img src="/cargando.gif" alt="Cargando..." />
-        <p className="loading-text">Cargando...</p>
-      </div>
-    );
-
-  if (error) return <p>Error: {error.message}</p>;
 
   const manejarClickPokemon = (id: number) => {
     navigate(`/pokedex/${id}`);
