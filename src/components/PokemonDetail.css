@@ -93,6 +93,16 @@
     border-radius: 12px;
     color: white;
     text-transform: uppercase; 
+
+}
+.pokemon-tipos-detalles .tipo {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    font-size: 30px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-right: 10px; /* Espacio entre los tipos */
 }
 
 /* Contenedor de habilidades con iconos */
@@ -109,7 +119,7 @@
 }
 
 .pokemon-habilidades h3 {
-    font-size: 18px;
+    font-size: 25px;
     margin-bottom: 5px;
 }
 
@@ -185,7 +195,31 @@
 .pokemon-detail-container.steel { background: linear-gradient(135deg, rgba(138, 138, 159, 0.5), rgba(92, 92, 112, 0.5)); }
 .pokemon-detail-container.fairy { background: linear-gradient(135deg, rgba(183, 93, 134, 0.5), rgba(130, 64, 97, 0.5)); }
 
-
+/* cambio de color dependiendo el tipo en la estadisticas*/
+.stat-block.filled {
+    background-color: rgba(0, 0, 0, 0); 
+  }
+  
+  /* Colores por tipo */
+  .stat-block.filled.fire { background-color: #ff6f00; }
+  .stat-block.filled.water { background-color: #1e90ff; }
+  .stat-block.filled.grass { background-color: #4caf50; }
+  .stat-block.filled.electric { background-color: #ffd700; }
+  .stat-block.filled.ice { background-color: #00d4ff; }
+  .stat-block.filled.fighting { background-color: #b22222; }
+  .stat-block.filled.poison { background-color: #800080; }
+  .stat-block.filled.ground { background-color: #d2b48c; }
+  .stat-block.filled.flying { background-color: #87ceeb; }
+  .stat-block.filled.psychic { background-color: #ff69b4; }
+  .stat-block.filled.bug { background-color: #9acd32; }
+  .stat-block.filled.rock { background-color: #8b4513; }
+  .stat-block.filled.ghost { background-color: #4b0082; }
+  .stat-block.filled.dragon { background-color: #6a5acd; }
+  .stat-block.filled.dark { background-color: #4f4f4f; }
+  .stat-block.filled.steel { background-color: #a9a9a9; }
+  .stat-block.filled.fairy { background-color: #ffb6c1; }
+/*////////////////////////////////////////////////////////////////////////*
+  
 /*Desenfoque del fondo*/
 .pokemon-detail-container {
     backdrop-filter: blur(10px);
@@ -254,25 +288,6 @@
     object-fit: contain; 
     margin-right: 5px; 
   }
-.pokemon-tipos-detalles .tipo {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    font-size: 30px;
-    padding: 4px 8px;
-    border-radius: 8px;
-    font-weight: bold;
-    margin-right: 10px; /* Espacio entre los tipos */
-}
-
-.pokemon-tipos-detalles .tipo {
-    font-size: 30px; /* Tamaño pequeño en la lista */
-    padding: 4px 8px;
-    border-radius: 8px;
-    font-weight: bold;
-}
-.pokemon-tipos-detalles .tipo:last-child {
-    margin-right: 0; 
-}
 
 
 /* Habilidades */
@@ -285,7 +300,7 @@
 }
 
 .pokemon-habilidades span {
-     background-color: rgba(48, 97, 56, 0.5); /* Fondo negro semitransparente */
+     background-color: rgba(143, 142, 142, 0.219); /* Fondo negro semitransparente */
     padding: 5px 12px;
     border-radius: 15px;
     font-size: 1rem;
@@ -294,7 +309,7 @@
 
 /* Estadísticas */
 .pokemon-stats {
-    background-color: rgba(48, 97, 56, 0.5); /* Fondo negro semitransparente */
+    background-color: rgba(253, 253, 253, 0.212); /* Fondo negro semitransparente */
     padding: 10px;
     border-radius: 10px;
     margin-top: 15px;

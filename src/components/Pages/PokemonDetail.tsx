@@ -88,31 +88,34 @@ const PokemonDetail = () => {
           </div>
 
           
-          <div className="pokemon-stats">
-            <h3>Puntos de base</h3>
-            <div className="stats-grid">
-              {pokemon.pokemon_v2_pokemonstats?.length > 0 ? (
-                pokemon.pokemon_v2_pokemonstats.map((stat: any) => {
-                  const statName = stat.pokemon_v2_stat?.name || "Desconocida";
-                  const statValue = stat.base_stat || 0;
-                  const numBlocks = Math.round(statValue / 25.5); 
-
-                  return (
-                    <div key={statName} className="stat-column">
-                      <div className="stat-blocks">
-                        {[...Array(10)].map((_, index) => (
-                          <div key={index} className={`stat-block ${index < numBlocks ? "filled" : ""}`} />
-                        ))}
-                      </div>
-                      <span className="stat-name">{statName.toUpperCase()}</span>
+                  {/* Estadísticas del Pokémon */}
+        <div className="pokemon-stats">
+          <h3>Estadísticas:</h3>
+          <div className="stats-grid">
+            {pokemon.pokemon_v2_pokemonstats?.length > 0 ? (
+              pokemon.pokemon_v2_pokemonstats.map((stat: any) => {
+                const porcentaje = (stat.base_stat / 150) * 10; // Normalizar a 10 bloques
+                return (
+                  <div key={stat.pokemon_v2_stat.name} className="stat-column">
+                    <div className="stat-blocks">
+                      {[...Array(10)].map((_, i) => (
+                        <div
+                          key={i}
+                          className={`stat-block ${
+                            i < porcentaje ? `filled ${tiposPokemon[0]}` : ""
+                          }`}
+                        ></div>
+                      ))}
                     </div>
-                  );
-                })
-              ) : (
-                <p>No se encontraron estadísticas.</p>
-              )}
-            </div>
+                    <span className="stat-name">{stat.pokemon_v2_stat.name}</span>
+                  </div>
+                );
+              })
+            ) : (
+              <p>No se encontraron estadísticas.</p>
+            )}
           </div>
+        </div>
 
         </div>
       </div>
