@@ -4,6 +4,7 @@ import { client } from "../../services/graphql";
 import PokemonList from "../PokemonList";
 import Navbar from "../Navbar";
 import Buscador from "../Buscador.tsx";
+import BuscadorPorTipos from "../BuscadorByType.tsx";
 
 const App = () => {
   const [filtro, setFiltro] = useState("");
@@ -13,7 +14,10 @@ const App = () => {
       <>
         <Navbar />
         <Buscador onSearch={setFiltro} />
+        <BuscadorPorTipos setFiltro={setFiltro} />
         <PokemonList filtro={filtro} />
+        
+        
       </>
     </ApolloProvider>
   );
