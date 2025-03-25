@@ -17,7 +17,7 @@ const usePokemones = () => {
     setIsLoading(true);
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500); // Simula un tiempo de carga para la Pokédex
+    }, 1000); 
 
     return () => clearTimeout(timer);
   }, [data]);

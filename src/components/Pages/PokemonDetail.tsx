@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import usePokemonInfo from "../../hooks/UsePokemonInfo";
+import usePokemonInfo from "../../hooks/UsePokemonDetail";
 import "../pokemonDetail.css";
 import traduccionesTipos from "../../utils/traduccionesTipos";
 import Navbar from "../Navbar";
@@ -12,7 +12,13 @@ const PokemonDetail = () => {
 
   const { pokemon, loading, error } = usePokemonInfo(pokemonId);
 
-  if (loading) return <p>Cargando...</p>;
+  if (loading)
+    return (
+      <div className="loading-container">
+        <img src="/cargando.gif" alt="Cargando..." />
+        <p className="loading-text">Cargando...</p>
+      </div>
+    );
   if (error) return <p>Error: {error.message}</p>;
   if (!pokemon) return <p>No se encontró el Pokémon.</p>;
 

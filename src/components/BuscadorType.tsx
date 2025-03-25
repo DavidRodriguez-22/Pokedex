@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import usePokemonByType from "../hooks/UsePokemonByType";
-import "./Buscador.css";
+import usePokemonByType from "../hooks/UsePokemonType";
 import traduccionesTipos from "../utils/traduccionesTipos";
 
 const tiposPokemon = [
@@ -40,7 +39,16 @@ const BuscadorPorTipos: React.FC<BuscadorPorTiposProps> = ({ setFiltro }) => {
   const [tipoSeleccionado, setTipoSeleccionado] = useState("");
   const { data, loading, error } = usePokemonByType(tipoSeleccionado || ""); 
   const navigate = useNavigate();
+  if (loading && tipoSeleccionado) {
+    return (
+      <div className="loading-container">
+        <img src="/cargando.gif" alt="Cargando..." />
+        <p className="loading-text">Cargando...</p>
+      </div>
+    );
+  }
 
+  if (error) return <p>Error: {error.message}</p>;
   const manejarCambio = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const tipo = e.target.value;
     setTipoSeleccionado(tipo);
@@ -90,7 +98,7 @@ const BuscadorPorTipos: React.FC<BuscadorPorTiposProps> = ({ setFiltro }) => {
                 />
               )}
 
-              <div className="pokemon-tipos-busqueda-tipo">
+              <div className="pokemon-tipos-lista">
                 {pokemon_v2_pokemon.pokemon_v2_pokemontypes?.map(({ pokemon_v2_type }) => (
                   <span key={pokemon_v2_type.name} className={`tipo ${pokemon_v2_type.name}`}>
                     {traduccionesTipos[pokemon_v2_type.name] || pokemon_v2_type.name}

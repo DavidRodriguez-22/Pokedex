@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Importa useNavigate
-import usePokemon from "../hooks/usePokemon";
-import "./Buscador.css";
+import usePokemon from "../hooks/usePokemonName";
+import "./BuscadorName.css";
 import traduccionesTipos from "../utils/traduccionesTipos";
 
 interface BuscadorProps {

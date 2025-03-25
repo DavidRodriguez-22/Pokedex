@@ -1,4 +1,4 @@
-import usePokemones from "../hooks/UsePokemones";
+import usePokemones from "../hooks/UsePokemonesList";
 import "./pokemonList.css";
 import traduccionesTipos from "../utils/traduccionesTipos";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,7 @@ interface PokemonListProps {
 }
 
 const PokemonList: React.FC<PokemonListProps> = ({ filtro }) => {
-  const navigate = useNavigate(); // Agregamos useNavigate para la navegación
+  const navigate = useNavigate(); 
   const { data, loading, error, cargarMasPokemones, cargarPokemonesAnteriores, offset } = usePokemones();
 
   if (loading)

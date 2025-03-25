@@ -148,7 +148,7 @@ body {
 }
 
 /* Tipos de Pokémon */
-.pokemon-tipos {
+.pokemon-tipos-lista {
     display: flex;
     gap: 5px;
     margin-top: 5px;
