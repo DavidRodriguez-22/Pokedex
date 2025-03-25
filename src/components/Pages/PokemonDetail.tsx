@@ -18,10 +18,31 @@ const PokemonDetail = () => {
   const sprite =
     pokemon.pokemon_v2_pokemonsprites?.[0]?.sprites?.other?.["official-artwork"]?.front_default;
 
-  // Obtener los tipos del Pokémon
-  const tiposPokemon: string[] = pokemon.pokemon_v2_pokemontypes.map(
-    (tipo: any) => tipo.pokemon_v2_type.name
-  );
+  // Obtener los tipos principales del Pokémon
+  const tiposPokemon: string[] = pokemon.pokemon_v2_pokemontypes
+    .slice(0, 2) // Solo los dos primeros tipos
+    .map((tipo: any) => tipo.pokemon_v2_type.name.toLowerCase());
+
+  console.log("Tipos principales del Pokémon:", tiposPokemon);
+  console.log("Movimientos disponibles para este Pokémon:", pokemon.pokemon_v2_pokemonmoves);
+
+  // Filtrar los movimientos aprendidos por nivel
+  let movimientosPrincipales = pokemon.pokemon_v2_pokemonmoves
+    .filter((mov: any) => mov.level !== null) // Solo movimientos aprendidos por nivel
+    .sort((a: any, b: any) => b.level - a.level); // Ordenar por nivel descendente
+
+  // Eliminar movimientos duplicados
+  const movimientosUnicos = new Map();
+  movimientosPrincipales = movimientosPrincipales.filter((mov: any) => {
+    if (!movimientosUnicos.has(mov.pokemon_v2_move.name)) {
+      movimientosUnicos.set(mov.pokemon_v2_move.name, true);
+      return true;
+    }
+    return false;
+  });
+
+  // Tomar solo los dos primeros movimientos únicos
+  movimientosPrincipales = movimientosPrincipales.slice(0, 2);
 
   return (
     <div className="pokemon-detail-page">
@@ -53,15 +74,12 @@ const PokemonDetail = () => {
           <p><strong>Peso:</strong> {pokemon.weight ? pokemon.weight / 10 : "N/A"} kg</p>
           <p><strong>Altura:</strong> {pokemon.height ? pokemon.height / 10 : "N/A"} m</p>
 
-          {/* Ataques del Pokémon filtrados por tipo */}
+          {/* Movimientos principales */}
           <div className="pokemon-habilidades">
-            <h3>Ataques:</h3>
+            <h3>Ataques principales:</h3>
             <div className="habilidades-container">
-              {pokemon.pokemon_v2_pokemonmoves
-                .filter((mov: any) =>
-                  tiposPokemon.includes(mov.pokemon_v2_move.pokemon_v2_type.name)
-                ) // Filtra solo los ataques del mismo tipo
-                .map((mov: any) => {
+              {movimientosPrincipales.length > 0 ? (
+                movimientosPrincipales.map((mov: any) => {
                   const tipoMovimiento = mov.pokemon_v2_move.pokemon_v2_type.name.toLowerCase();
                   return (
                     <div key={mov.pokemon_v2_move.name} className="habilidad">
@@ -69,12 +87,15 @@ const PokemonDetail = () => {
                         src={`/tipos/ataque_${tipoMovimiento}.png`}
                         alt={tipoMovimiento}
                         className="habilidad-icono"
+                        onError={(e) => (e.currentTarget.src = "/tipos/ataque_default.png")} // Imagen por defecto si no se encuentra la del tipo
                       />
                       <span className="habilidad-nombre">{mov.pokemon_v2_move.name || "Desconocida"}</span>
                     </div>
                   );
                 })
-              }
+              ) : (
+                <p>No se encontraron ataques principales.</p>
+              )}
             </div>
           </div>
 

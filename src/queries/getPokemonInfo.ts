@@ -26,7 +26,11 @@ export const GET_POKEMON_INFO = gql`
           name
         }
       }
-      pokemon_v2_pokemonmoves {
+      pokemon_v2_pokemonmoves(
+        where: { pokemon_v2_movelearnmethod: { name: { _eq: "level-up" } } }
+        order_by: { level: desc }
+      ) {
+        level
         pokemon_v2_move {
           name
           pokemon_v2_type {

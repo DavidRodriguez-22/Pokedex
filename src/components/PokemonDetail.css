@@ -234,6 +234,12 @@
     display: inline-block;
     margin: 5px;
 }
+.habilidad-icono {
+    width: 32px;  /* Ancho fijo */
+    height: 32px; /* Alto fijo */
+    object-fit: contain; /* Asegura que la imagen mantenga su proporción */
+    margin-right: 5px; /* Espacio entre la imagen y el texto */
+  }
 .pokemon-tipos-detalles .tipo {
     font-size: 30px;
     padding: 4px 8px;
