@@ -13,7 +13,7 @@ const App = () => {
     <ApolloProvider client={client}>
       <>
         <Navbar />
-        <Buscador onSearch={setFiltro} />
+        <Buscador />
         <BuscadorPorTipos setFiltro={setFiltro} />
         <PokemonList filtro={filtro} />
         

@@ -1,26 +1,21 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importa useNavigate
+import { useNavigate } from "react-router-dom";
 import usePokemon from "../hooks/usePokemonName";
 import "./BuscadorName.css";
 import traduccionesTipos from "../utils/traduccionesTipos";
 
-interface BuscadorProps {
-  onSearch: (busqueda: string) => void;
-}
-
-const Buscador: React.FC<BuscadorProps> = ({ onSearch }) => {
+const Buscador: React.FC = () => {
   const [busqueda, setBusqueda] = useState("");
-  const { data, loading, error } = usePokemon(busqueda);
-  const navigate = useNavigate(); // Inicializa useNavigate para la navegación
+  const navigate = useNavigate();
+
+  const { data, loading, error } = usePokemon(busqueda.trim().length > 0 ? busqueda : "");
 
   const manejarCambio = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const valor = e.target.value;
-    setBusqueda(valor);
-    onSearch(valor);
+    setBusqueda(e.target.value);
   };
 
   const manejarClickPokemon = (id: number) => {
-    navigate(`/pokedex/${id}`); // Redirige a la página de detalles del Pokémon con el ID
+    navigate(`/pokedex/${id}`);
   };
 
   return (
@@ -42,7 +37,7 @@ const Buscador: React.FC<BuscadorProps> = ({ onSearch }) => {
             <div
               key={pokemon.id}
               className="pokemon-card"
-              onClick={() => manejarClickPokemon(pokemon.id)} // Evento onClick
+              onClick={() => manejarClickPokemon(pokemon.id)}
             >
               <div className="pokemon-numero-lista">
                 <span className="numero-visible">#{pokemon.id}</span>
