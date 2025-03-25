@@ -87,7 +87,7 @@ const PokemonDetail = () => {
             </div>
           </div>
 
-          {/* 🔹 NUEVO: Estadísticas del Pokémon en cuadrícula */}
+          
           <div className="pokemon-stats">
             <h3>Puntos de base</h3>
             <div className="stats-grid">
@@ -95,7 +95,7 @@ const PokemonDetail = () => {
                 pokemon.pokemon_v2_pokemonstats.map((stat: any) => {
                   const statName = stat.pokemon_v2_stat?.name || "Desconocida";
                   const statValue = stat.base_stat || 0;
-                  const numBlocks = Math.round(statValue / 25.5); // Escalar a 10 bloques
+                  const numBlocks = Math.round(statValue / 25.5); 
 
                   return (
                     <div key={statName} className="stat-column">

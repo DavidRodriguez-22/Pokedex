@@ -285,7 +285,7 @@
 }
 
 .pokemon-habilidades span {
-    background: rgba(255, 255, 255, 0.2);
+     background-color: rgba(48, 97, 56, 0.5); /* Fondo negro semitransparente */
     padding: 5px 12px;
     border-radius: 15px;
     font-size: 1rem;
@@ -294,7 +294,7 @@
 
 /* Estadísticas */
 .pokemon-stats {
-    background-color: #a5a5a5;
+    background-color: rgba(48, 97, 56, 0.5); /* Fondo negro semitransparente */
     padding: 10px;
     border-radius: 10px;
     margin-top: 15px;
@@ -328,7 +328,7 @@
   }
   
   .stat-block.filled {
-    background-color: #1e90ff; /* Azul como en la imagen */
+    background-color: #1e8fff98; /* Azul como en la imagen */
   }
   
   .stat-name {
