@@ -44,12 +44,12 @@ const Buscador: React.FC<BuscadorProps> = ({ onSearch }) => {
               className="pokemon-card"
               onClick={() => manejarClickPokemon(pokemon.id)} // Evento onClick
             >
-              <div className="pokemon-numero">
+              <div className="pokemon-numero-lista">
                 <span className="numero-visible">#{pokemon.id}</span>
               </div>
 
               <h3 className="pokemon-titulo">
-                <span className="pokemon-nombre">{pokemon.name}</span>
+                <span className="pokemon-nombre-lista">{pokemon.name}</span>
               </h3>
 
               {pokemon.pokemon_v2_pokemonsprites?.[0]?.sprites?.other?.["official-artwork"] && (
@@ -60,7 +60,7 @@ const Buscador: React.FC<BuscadorProps> = ({ onSearch }) => {
                 />
               )}
 
-              <div className="pokemon-tipos">
+              <div className="pokemon-tipos-buscador">
                 {pokemon.pokemon_v2_pokemontypes.map((tipo: any) => {
                   const nombreTipo = tipo.pokemon_v2_type.name;
                   return (

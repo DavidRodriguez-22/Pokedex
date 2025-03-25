@@ -1,91 +1,99 @@
 import { useParams } from "react-router-dom";
-import usePokemonInfo from "../../hooks/UsePokemonInfo"; // Corregido el import
-import "../pokemonDetail.css"; // (Si usas alias @ para src en Vite)
+import usePokemonInfo from "../../hooks/UsePokemonInfo";
+import "../pokemonDetail.css";
 import traduccionesTipos from "../../utils/traduccionesTipos";
 
 const PokemonDetail = () => {
   const { id } = useParams();
-
-  // Convertimos `id` a número de forma segura
   const pokemonId = id ? parseInt(id, 10) : null;
 
-  // Si el id no es válido, mostramos un mensaje de error
   if (!pokemonId) return <p>Error: ID de Pokémon no válido</p>;
 
   const { pokemon, loading, error } = usePokemonInfo(pokemonId);
-
-  console.log("Datos del Pokémon:", pokemon); // 🔍 Verifica los datos en la consola
 
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>Error: {error.message}</p>;
   if (!pokemon) return <p>No se encontró el Pokémon.</p>;
 
-  // Obtener la imagen del Pokémon desde los sprites (Verificamos que existan datos)
   const sprite =
     pokemon.pokemon_v2_pokemonsprites?.[0]?.sprites?.other?.["official-artwork"]?.front_default;
 
-  console.log("Datos completos del Pokémon:", pokemon);
-  console.log("Habilidades:", pokemon.pokemon_v2_pokemonabilities);
-  console.log("Sprites:", pokemon.pokemon_v2_pokemonsprites);
-  console.log("Tipos:", pokemon.pokemon_v2_pokemontypes);
-  console.log("Estadísticas:", pokemon.pokemon_v2_pokemonstats);
+  // Obtener los tipos del Pokémon
+  const tiposPokemon: string[] = pokemon.pokemon_v2_pokemontypes.map(
+    (tipo: any) => tipo.pokemon_v2_type.name
+  );
 
   return (
-    <div className="pokemon-detail-container">
-      <div className="pokemon-numero">
-        <span className="numero-visible">#{pokemon.id}</span>
-      </div>
+    <div className="pokemon-detail-page">
+      <div className={`pokemon-detail-container ${tiposPokemon[0] || ""}`}>
+        {/* Imagen del Pokémon */}
+        {sprite ? (
+          <img src={sprite} alt={pokemon.name} className="pokemon-image" />
+        ) : (
+          <p>Imagen no disponible</p>
+        )}
 
-      <h3 className="pokemon-titulo">
-        <span className="pokemon-nombre">{pokemon.name}</span>
-      </h3>
-
-      {sprite ? (
-        <img src={sprite} alt={pokemon.name} className="pokemon-image" />
-      ) : (
-        <p>Imagen no disponible</p>
-      )}
-
-      <div className="pokemon-info">
-        <span><p>Peso: {pokemon.weight ? pokemon.weight / 10 : "N/A"} kg</p></span>
-        <span><p>Altura: {pokemon.height ? pokemon.height / 10 : "N/A"} m</p></span>
-
-        <div className="pokemon-tipos">
-          {pokemon.pokemon_v2_pokemontypes.map((tipo: any) => {
-            const nombreTipo = tipo.pokemon_v2_type.name;
-            return (
-              <span key={nombreTipo} className={`tipo ${nombreTipo}`}>
-                {traduccionesTipos[nombreTipo] || nombreTipo}
-              </span>
-            );
-          })}
+        {/* Nombre y número del Pokémon */}
+        <div className="pokemon-header">
+          <span className="pokemon-numero">#{pokemon.id}</span>
+          <h3 className="pokemon-nombre">{pokemon.name}</h3>
         </div>
 
+        {/* Tipos del Pokémon */}
+        <div className="pokemon-tipos-detalles">
+          {tiposPokemon.map((nombreTipo: string) => (
+            <span key={nombreTipo} className={`tipo ${nombreTipo}`}>
+              {traduccionesTipos[nombreTipo] || nombreTipo}
+            </span>
+          ))}
+        </div>
 
+        {/* Información del Pokémon */}
+        <div className="pokemon-info">
+          <p><strong>Peso:</strong> {pokemon.weight ? pokemon.weight / 10 : "N/A"} kg</p>
+          <p><strong>Altura:</strong> {pokemon.height ? pokemon.height / 10 : "N/A"} m</p>
 
-        <h3>Habilidades:</h3>
-        <ul>
-          {pokemon.pokemon_v2_pokemonabilities?.length > 0 ? (
-            pokemon.pokemon_v2_pokemonabilities.map((hab: any) => (
-              <li key={hab.pokemon_v2_ability?.name}>{hab.pokemon_v2_ability?.name || "Desconocida"}</li>
-            ))
-          ) : (
-            <p>No se encontraron habilidades.</p>
-          )}
-        </ul>
+          {/* Ataques del Pokémon filtrados por tipo */}
+          <div className="pokemon-habilidades">
+            <h3>Ataques:</h3>
+            <div className="habilidades-container">
+              {pokemon.pokemon_v2_pokemonmoves
+                .filter((mov: any) =>
+                  tiposPokemon.includes(mov.pokemon_v2_move.pokemon_v2_type.name)
+                ) // Filtra solo los ataques del mismo tipo
+                .map((mov: any) => {
+                  const tipoMovimiento = mov.pokemon_v2_move.pokemon_v2_type.name.toLowerCase();
+                  return (
+                    <div key={mov.pokemon_v2_move.name} className="habilidad">
+                      <img
+                        src={`/tipos/ataque_${tipoMovimiento}.png`}
+                        alt={tipoMovimiento}
+                        className="habilidad-icono"
+                      />
+                      <span className="habilidad-nombre">{mov.pokemon_v2_move.name || "Desconocida"}</span>
+                    </div>
+                  );
+                })
+              }
+            </div>
+          </div>
 
-        <h3>Estadísticas:</h3>
-        <ul>
-          {pokemon.pokemon_v2_pokemonstats?.length > 0 ? (
-            pokemon.pokemon_v2_pokemonstats.map((stat: any) => (
-              <li key={stat.pokemon_v2_stat?.name}>
-                <span>{stat.pokemon_v2_stat?.name}:</span> {stat.base_stat}
-              </li>
-            ))
-          ) : (
-            <p>No se encontraron estadísticas.</p>
-          )}
-        </ul>
+          {/* Estadísticas del Pokémon */}
+          <div className="pokemon-stats">
+            <h3>Estadísticas:</h3>
+            <ul>
+              {pokemon.pokemon_v2_pokemonstats?.length > 0 ? (
+                pokemon.pokemon_v2_pokemonstats.map((stat: any) => (
+                  <li key={stat.pokemon_v2_stat?.name}>
+                    <strong>{stat.pokemon_v2_stat?.name}:</strong> {stat.base_stat}
+                  </li>
+                ))
+              ) : (
+                <p>No se encontraron estadísticas.</p>
+              )}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

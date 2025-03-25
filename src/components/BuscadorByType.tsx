@@ -84,12 +84,12 @@ const BuscadorPorTipos: React.FC<BuscadorPorTiposProps> = ({ setFiltro }) => {
               className="pokemon-card" 
               onClick={() => manejarClickPokemon(pokemon_v2_pokemon.id)}
             >
-              <div className="pokemon-numero">
+              <div className="pokemon-numero-lista">
                 <span className="numero-visible">#{pokemon_v2_pokemon.id}</span>
               </div>
 
               <h3 className="pokemon-titulo">
-                <span className="pokemon-nombre">{pokemon_v2_pokemon.name}</span>
+                <span className="pokemon-nombre-lista">{pokemon_v2_pokemon.name}</span>
               </h3>
 
               {pokemon_v2_pokemon.pokemon_v2_pokemonsprites?.[0]?.sprites?.other?.["official-artwork"]?.front_default && (
@@ -100,7 +100,7 @@ const BuscadorPorTipos: React.FC<BuscadorPorTiposProps> = ({ setFiltro }) => {
                 />
               )}
 
-              <div className="pokemon-tipos">
+              <div className="pokemon-tipos-busqueda-tipo">
                 {pokemon_v2_pokemon.pokemon_v2_pokemontypes?.map(({ pokemon_v2_type }) => (
                   <span key={pokemon_v2_type.name} className={`tipo ${pokemon_v2_type.name}`}>
                     {traduccionesTipos[pokemon_v2_type.name] || pokemon_v2_type.name}

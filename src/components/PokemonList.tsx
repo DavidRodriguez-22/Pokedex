@@ -32,18 +32,18 @@ const PokemonList: React.FC<PokemonListProps> = ({ filtro }) => {
           key={pokemon.id}
           className="pokemon-card"
           onClick={() => {
-            console.log(`Navegando a: /pokedex/${pokemon.id}`); // Verifica qué URL está generando
+            console.log(`Navegando a: /pokedex/${pokemon.id}`); 
             navigate(`/pokedex/${pokemon.id}`);
           }}
 
-          style={{ cursor: "pointer" }} // Agrega cursor de puntero para indicar clickeabilidad
+          style={{ cursor: "pointer" }} 
         >
-          <div className="pokemon-numero">
+          <div className="pokemon-numero-lista">
             <span className="numero-visible">#{pokemon.id}</span>
           </div>
 
           <h3 className="pokemon-titulo">
-            <span className="pokemon-nombre">{pokemon.name}</span>
+            <span className="pokemon-nombre-lista">{pokemon.name}</span>
           </h3>
 
           {pokemon.pokemon_v2_pokemonsprites?.[0]?.sprites?.other?.["official-artwork"] && (
@@ -54,7 +54,7 @@ const PokemonList: React.FC<PokemonListProps> = ({ filtro }) => {
             />
           )}
 
-          <div className="pokemon-tipos">
+          <div className="pokemon-tipos-lista">
             {pokemon.pokemon_v2_pokemontypes.map((tipo: any) => {
               const nombreTipo = tipo.pokemon_v2_type.name;
               return (
