@@ -18,20 +18,14 @@ const PokemonDetail = () => {
   const sprite =
     pokemon.pokemon_v2_pokemonsprites?.[0]?.sprites?.other?.["official-artwork"]?.front_default;
 
-  // Obtener los tipos principales del Pokémon
   const tiposPokemon: string[] = pokemon.pokemon_v2_pokemontypes
-    .slice(0, 2) // Solo los dos primeros tipos
+    .slice(0, 2)
     .map((tipo: any) => tipo.pokemon_v2_type.name.toLowerCase());
 
-  console.log("Tipos principales del Pokémon:", tiposPokemon);
-  console.log("Movimientos disponibles para este Pokémon:", pokemon.pokemon_v2_pokemonmoves);
-
-  // Filtrar los movimientos aprendidos por nivel
   let movimientosPrincipales = pokemon.pokemon_v2_pokemonmoves
-    .filter((mov: any) => mov.level !== null) // Solo movimientos aprendidos por nivel
-    .sort((a: any, b: any) => b.level - a.level); // Ordenar por nivel descendente
+    .filter((mov: any) => mov.level !== null)
+    .sort((a: any, b: any) => b.level - a.level);
 
-  // Eliminar movimientos duplicados
   const movimientosUnicos = new Map();
   movimientosPrincipales = movimientosPrincipales.filter((mov: any) => {
     if (!movimientosUnicos.has(mov.pokemon_v2_move.name)) {
@@ -41,26 +35,22 @@ const PokemonDetail = () => {
     return false;
   });
 
-  // Tomar solo los dos primeros movimientos únicos
   movimientosPrincipales = movimientosPrincipales.slice(0, 2);
 
   return (
     <div className="pokemon-detail-page">
       <div className={`pokemon-detail-container ${tiposPokemon[0] || ""}`}>
-        {/* Imagen del Pokémon */}
         {sprite ? (
           <img src={sprite} alt={pokemon.name} className="pokemon-image" />
         ) : (
           <p>Imagen no disponible</p>
         )}
 
-        {/* Nombre y número del Pokémon */}
         <div className="pokemon-header">
           <span className="pokemon-numero">#{pokemon.id}</span>
           <h3 className="pokemon-nombre">{pokemon.name}</h3>
         </div>
 
-        {/* Tipos del Pokémon */}
         <div className="pokemon-tipos-detalles">
           {tiposPokemon.map((nombreTipo: string) => (
             <span key={nombreTipo} className={`tipo ${nombreTipo}`}>
@@ -69,12 +59,10 @@ const PokemonDetail = () => {
           ))}
         </div>
 
-        {/* Información del Pokémon */}
         <div className="pokemon-info">
           <p><strong>Peso:</strong> {pokemon.weight ? pokemon.weight / 10 : "N/A"} kg</p>
           <p><strong>Altura:</strong> {pokemon.height ? pokemon.height / 10 : "N/A"} m</p>
 
-          {/* Movimientos principales */}
           <div className="pokemon-habilidades">
             <h3>Ataques principales:</h3>
             <div className="habilidades-container">
@@ -87,7 +75,7 @@ const PokemonDetail = () => {
                         src={`/tipos/ataque_${tipoMovimiento}.png`}
                         alt={tipoMovimiento}
                         className="habilidad-icono"
-                        onError={(e) => (e.currentTarget.src = "/tipos/ataque_default.png")} // Imagen por defecto si no se encuentra la del tipo
+                        onError={(e) => (e.currentTarget.src = "/tipos/ataque_default.png")}
                       />
                       <span className="habilidad-nombre">{mov.pokemon_v2_move.name || "Desconocida"}</span>
                     </div>
@@ -99,21 +87,33 @@ const PokemonDetail = () => {
             </div>
           </div>
 
-          {/* Estadísticas del Pokémon */}
+          {/* 🔹 NUEVO: Estadísticas del Pokémon en cuadrícula */}
           <div className="pokemon-stats">
-            <h3>Estadísticas:</h3>
-            <ul>
+            <h3>Puntos de base</h3>
+            <div className="stats-grid">
               {pokemon.pokemon_v2_pokemonstats?.length > 0 ? (
-                pokemon.pokemon_v2_pokemonstats.map((stat: any) => (
-                  <li key={stat.pokemon_v2_stat?.name}>
-                    <strong>{stat.pokemon_v2_stat?.name}:</strong> {stat.base_stat}
-                  </li>
-                ))
+                pokemon.pokemon_v2_pokemonstats.map((stat: any) => {
+                  const statName = stat.pokemon_v2_stat?.name || "Desconocida";
+                  const statValue = stat.base_stat || 0;
+                  const numBlocks = Math.round(statValue / 25.5); // Escalar a 10 bloques
+
+                  return (
+                    <div key={statName} className="stat-column">
+                      <div className="stat-blocks">
+                        {[...Array(10)].map((_, index) => (
+                          <div key={index} className={`stat-block ${index < numBlocks ? "filled" : ""}`} />
+                        ))}
+                      </div>
+                      <span className="stat-name">{statName.toUpperCase()}</span>
+                    </div>
+                  );
+                })
               ) : (
                 <p>No se encontraron estadísticas.</p>
               )}
-            </ul>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
