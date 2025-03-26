@@ -1,5 +1,5 @@
 import usePokemones from "../hooks/UsePokemonesList";
-import "./pokemonList.css";
+import "./PokemonList.css";
 import traduccionesTipos from "../utils/traduccionesTipos";
 import { useNavigate } from "react-router-dom";
 
