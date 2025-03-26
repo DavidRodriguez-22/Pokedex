@@ -54,3 +54,7 @@ npm run dev  //Ejecutar en desarrollo
 ![Detalles pokemon](public/Detalles_pokemon1.png)
 
 ![Detalles pokemon](public/Detalles_pokemon2.png)
+
+## url publica del proyect0
+
+url: https://pokedex-xi-black.vercel.app/
