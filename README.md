@@ -1,54 +1,56 @@
-# React + TypeScript + Vite
+# Pokédex
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción:
 
-Currently, two official plugins are available:
+Pokédex es una aplicación web que permite explorar una base de datos de Pokémon, mostrando detalles como nombre, tipo, habilidades y estadísticas de cada pokemon. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ¿que se uso?
 
-## Expanding the ESLint configuration
+HTML5 - Para la estructura de la aplicación.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+CSS3 - Para los estilos y la presentación visual.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+React y typescript - Para la lógica y la interactividad.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+API de Pokémon (PokeAPI) - Para obtener los datos en tiempo real.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+GitHub  Para el despliegue.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+##Paso a paso:
+
+### 1. Clonar el repositorio: 
+git clone https://github.com/DavidRodriguez-22/Pokedex.git
+cd Pokedex
+
+### 2. Ejecutar con un servidor local gracias a react
+npm install  //Instalar dependencias
+npm run dev  //Ejecutar en desarrollo
+
+## Caracteristicas principales de nuestra aplicacion
+
+-Búsqueda de Pokémon por nombre o ID.
+
+-Interfaz atractiva y responsiva.
+
+-Visualización de habilidades y estadísticas.
+
+-Integración con la API de Pokémon.
+
+## Fotos de la aplicacion
+
+### Pantalla de inicio:
+![Pantalla de inicio](public/Pagina_inicial.png)
+
+### Pokedex:
+![Pokedex](public/Pokedex.png)
+
+### Busqueda:
+![Busqueda](public/Busqueda.png)
+
+### Filtrado:
+![Filtrado](public/Filtrado.png)
+
+### Detalles pokemon:
+![Detalles pokemon](public/Detalles_pokemon1.png)
+
+![Detalles pokemon](public/Detalles_pokemon2.png)
