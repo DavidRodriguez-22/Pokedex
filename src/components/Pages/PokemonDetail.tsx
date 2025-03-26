@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import usePokemonInfo from "../../hooks/UsePokemonDetail";
-import "../pokemonDetail.css";
+import "../PokemonDetail.css";
 import traduccionesTipos from "../../utils/traduccionesTipos";
 import Navbar from "../Navbar";
 
