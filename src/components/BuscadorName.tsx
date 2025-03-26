@@ -38,6 +38,7 @@ const Buscador: React.FC = () => {
               key={pokemon.id}
               className="pokemon-card"
               onClick={() => manejarClickPokemon(pokemon.id)}
+              style={{ cursor: "pointer" }} 
             >
               <div className="pokemon-numero-lista">
                 <span className="numero-visible">#{pokemon.id}</span>
@@ -55,7 +56,7 @@ const Buscador: React.FC = () => {
                 />
               )}
 
-              <div className="pokemon-tipos-buscador">
+              <div className="pokemon-tipos-lista">
                 {pokemon.pokemon_v2_pokemontypes.map((tipo: any) => {
                   const nombreTipo = tipo.pokemon_v2_type.name;
                   return (

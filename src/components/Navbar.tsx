@@ -6,13 +6,16 @@ const Navbar: React.FC = () => {
     return (
         <nav>
             <Logo />
-            <img 
+            <div>
+                <img 
                 src="/Pokebola-pokeball-png-0.png" 
                 alt="Pokebola" 
                 className="logo"
                 onClick={() => navigate(-1)}
                 style={{ cursor: "pointer" }}
             />
+            <span className="back-text">Atrás</span>
+            </div>
         </nav>
     );
   };

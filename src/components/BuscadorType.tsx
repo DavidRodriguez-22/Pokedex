@@ -81,6 +81,7 @@ const BuscadorPorTipos: React.FC<BuscadorPorTiposProps> = ({ setFiltro }) => {
               key={pokemon_v2_pokemon.id} 
               className="pokemon-card" 
               onClick={() => manejarClickPokemon(pokemon_v2_pokemon.id)}
+              style={{ cursor: "pointer" }} 
             >
               <div className="pokemon-numero-lista">
                 <span className="numero-visible">#{pokemon_v2_pokemon.id}</span>

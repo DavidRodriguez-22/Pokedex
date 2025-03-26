@@ -14,6 +14,15 @@ nav > svg {
 }
 
 .logo {
-    width: 40px; 
+    width: 30px; 
     height: auto; 
+    
+}
+
+.back-text {
+    margin-right: 10px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center; 
 }
