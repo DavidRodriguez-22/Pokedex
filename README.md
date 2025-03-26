@@ -16,7 +16,7 @@ API de Pokémon (PokeAPI) - Para obtener los datos en tiempo real.
 
 GitHub  Para el despliegue.
 
-##Paso a paso:
+## Paso a paso:
 
 ### 1. Clonar el repositorio: 
 git clone https://github.com/DavidRodriguez-22/Pokedex.git
